@@ -1,15 +1,13 @@
 from flask import Flask
-from config import DevConfig
+from config import config_options
 
 def create_app(config_name):
     # Intializing application
     app = Flask(__name__)
 
 
-    # Setting up configuration
-    app.config.from_object(DevConfig)
+     # Creating the app configurations
     app.config.from_object(config_options[config_name])
-
 
 
 
