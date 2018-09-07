@@ -8,4 +8,4 @@ def index():
     '''
     title = 'Welcome to make your pitches here '
 
-    return render_template('index.html', title= title)
+    return render_template('index.html', title=)
