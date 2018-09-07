@@ -2,8 +2,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from config import config_options
 
-    # Instantiating extensions
-    db = SQLAlchemy()
+# Instantiating extensions
+db = SQLAlchemy()
 
 def create_app(config_name):
     # Intializing application
