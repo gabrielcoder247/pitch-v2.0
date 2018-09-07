@@ -14,7 +14,7 @@ def create_app(config_name):
     app.config.from_object(config_options[config_name])
 
     # Initializing flask extensions
-    db.init_app()
+    db.init_app(app)
 
 
 
