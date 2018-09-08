@@ -111,3 +111,22 @@ class Comment(db.Model):
         return comments
 
 
+
+class Category(db.Model):
+    '''
+    Function that defines different categories of pitches
+    '''
+    __tablename__ ='categories'
+
+
+    id = db.Column(db.Integer, primary_key=True)
+    name_of_category = db.Column(db.String(255))
+    category_description = db.Column(db.String(255))
+
+    @classmethod
+    def get_categories(cls):
+        '''
+        This function fetches all the categories from the database
+        '''
+        categories = Category.query.all()
+        return categories
