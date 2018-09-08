@@ -11,7 +11,7 @@ class User(db.Model):
     pass_secure = db.Column(db.String(255))
 
 
-     @property
+    @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
 
