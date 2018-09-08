@@ -10,3 +10,7 @@ def index():
     title = 'Welcome to make your pitches here '
 
     return render_template('index.html', title = title)
+
+# @main.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
+# @login_required
+# def new_review(id):

@@ -2,29 +2,82 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from .import db
 from datetime import datetime
+from .import login_manager
 
 
-class User(db.Model):
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255))
-    pass_secure = db.Column(db.String(255))
+    username = db.Column(db.String(255),index = True)
+    email = db.Column(db.String(255),unique = True,index = True)
+    role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
+    bio = db.Column(db.String(255))
+    profile_pic_path = db.Column(db.String())
+    password_hash = db.Column(db.String(255))
+    pitch = db.relationship('Pitch',backref = 'users',lazy="dynamic")
 
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    
 
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
 
+
+
     @password.setter
     def password(self, password):
-        self.pass_secure = generate_password_hash(password)
-
+        self.password_hash = generate_password_hash(password)
 
     def verify_password(self,password):
-        return check_password_hash(self.pass_secure,password)
+        return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        return f'{self.username}'
+        return 'User {}'.format(self.username)
 
-    def __repr__(self):
-        return f'User {self.username}'
+
+class Pitch(db.Model):
+    '''
+    Pitch class to define Pitch Objects
+    '''
+    __tablename__ = 'pitch'
+
+    id = db.Column(db.Integer,primary_key = True)
+    pitch = db.Column(db.String)
+    category_id = db.Column(db.Integer)
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    comments = db.relationship('Comment',backref = 'pitch',lazy="dynamic")
+
+
+    def save_pitch(self):
+        '''
+        Function that saves pitches
+        '''
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_all_pitches(cls):
+        '''
+        Function that queries the databse and returns all the pitches
+        '''
+        return Pitch.query.all()
+
+    @classmethod
+    def get_pitches_by_category(cls,cat_id):
+        '''
+        Function that queries the databse and returns pitches based on the
+        category passed to it
+        '''
+        return Pitch.query.filter_by(category_id= cat_id)
+
+
+
