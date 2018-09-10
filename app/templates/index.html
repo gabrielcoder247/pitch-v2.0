@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+
+{% block styles %}
+    {{ super() }}
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4 text-center text-primary animated infinite bounce delay-0.2s">{{title}}</h1>
+  <p class="lead text-center">An app that helps you to view news source and top headlines from different source.</p>
+  <hr class="my-4">
+  <p class="lead text-center">click the buttons below to choose news sources by category. Then click on news source to view their top headlines and the news details.</p>
+  <p class="lead text-center">
+    <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#interviewPitch" role="button" aria-expanded="false" aria-controls="collapseExample">Interviews</a>
+    <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#salesPitch" role="button" aria-expanded="false" aria-controls="collapseExample">Sales</a>
+    <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#investmentPitch" role="button" aria-expanded="false" aria-controls="collapseExample">Investments</a>
+    <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#customerPitch" role="button" aria-expanded="false" aria-controls="collapseExample">Customers</a>
+    <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#employeesPitch" role="button" aria-expanded="false" aria-controls="collapseExample">Employees</a>
+  </p>
+  <div id="interviewPitch" class="collapse">
+  <div class="card text-center">
+    <div class="card-header">
+        <button type="button" class="btn  btn-success">
+             <span class="badge badge-pill badge-light">I</span> Interviews pitches
+          </button>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"> Select your favourite news source </h5>
+      <p class="card-text"></p>
+      <div class="row">
+        {{macro.displayCategoryList(interview)}}
+      </div>
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div> -->
+    <!-- <div class="card-footer text-muted">
+    </div> -->
+  </div>
+</div>
+</div>
+<div id="salesPitch" class="collapse">
+    <div class="card text-center">
+      <div class="card-header"><button type="button" class="btn  btn-success">
+          <span class="badge badge-pill badge-light">S</span> Sales pitches
+       </button>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Select your favourite business news source</h5>
+        <p class="card-text"></p>
+        <div class="row">
+          {{macro.displayCategoryList(sales)}}
+        </div>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div> -->
+      <!-- <div class="card-footer text-muted">
+      </div> -->
+    </div>
+  </div>
+  </div>
+  <div id="investmentPitch" class="collapse">
+      <div class="card text-center">
+        <div class="card-header">
+            <button type="button" class="btn  btn-success">
+                <span class="badge badge-pill badge-light">I</span> Investments pitches
+             </button>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Select your favourite sports news source</h5>
+          <p class="card-text"></p>
+          <div class="row">
+            {{macro.displayCategoryList(investment)}}
+          </div>
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div> -->
+        <!-- <div class="card-footer text-muted">
+        </div> -->
+      </div>
+    </div>
+    </div>
+    <div id="customerPitch" class="collapse">
+        <div class="card text-center">
+          <div class="card-header">
+              <button type="button" class="btn  btn-success">
+                  <span class="badge badge-pill badge-light">C</span> Customers pitchess
+               </button>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Select your favourite entertainment news source</h5>
+            <p class="card-text"></p>
+            <div class="row">
+              {{macro.displayCategoryList(customer)}}
+            </div>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div> -->
+          <!-- <div class="card-footer text-muted">
+          </div> -->
+        </div>
+      </div>
+      </div>
+      <div id="employeesPitch" class="collapse">
+          <div class="card text-center">
+            <div class="card-header">
+                <button type="button" class="btn  btn-success">
+                    <span class="badge badge-pill badge-light">T</span> Technology pitches
+                 </button>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Select your favourite technology news source</h5>
+              <p class="card-text"></p>
+              <div class="row">
+                {{macro.displayCategoryList(employees)}}
+              </div>
+              <!-- <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div> -->
+            <!-- <div class="card-footer text-muted">
+            </div> -->
+          </div>
+        </div>
+        </div>
+</div>
+
+
+  {% endblock %}
+
+  

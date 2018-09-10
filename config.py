@@ -1,13 +1,16 @@
+import os
+
 class Config:
     '''
     General configuration parent class
     '''
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://gabrielcoder:dushanbe2015@localhost/pitch'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
+    SECRET_KEY ='12345'
 
 
     # email configurations
-    
+
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True

@@ -5,21 +5,25 @@
         {% if title %}
         <title> {{ title }}</title>
         {% else %}
-        <title> Welcome to Gabs pitch apps </title>
+        <title> Gabs pitch apps </title>
         {% endif %}
+
+
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			
+		<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+		integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
+		crossorigin="anonymous">
     </head>
     <body>
 
 
         {% extends 'bootstrap/base.html'%}
         
-        <!-- {%block styles %}
-        {{super()}} -->
-        <!--Importing the simple mde css and js files  -->
-        <!-- {{ simplemde.css}}
-        {{ simplemde.js }}
-
-        {% endblock %} -->
+        
 
         <!-- Navbar block  --> 
         {% block navbar %}

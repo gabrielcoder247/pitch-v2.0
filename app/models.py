@@ -15,7 +15,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),index = True)
     email = db.Column(db.String(255),unique = True,index = True)
-    role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
+    # role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
@@ -51,10 +51,14 @@ class Pitch(db.Model):
     __tablename__ = 'pitch'
 
     id = db.Column(db.Integer,primary_key = True)
-    pitch = db.Column(db.String)
-    category_id = db.Column(db.Integer)
+    title = db.Column(db.String)
+    body = db.Column(db.String)
+    category = db.Column(db.Integer)
+    upvotes = db.Column(db.Integer)
+    downvotes = db.Column(db.Integer)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     comments = db.relationship('Comment',backref = 'pitch',lazy="dynamic")
+    posted = db.Column(db.DateTime, default=datetime.utcnow)
 
 
     def save_pitch(self):
@@ -90,7 +94,7 @@ class Comment(db.Model):
     comment= db.Column(db.String)
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id'))
     username =  db.Column(db.String)
-    votes= db.Column(db.Integer)
+   
 
 
     def save_comment(self):

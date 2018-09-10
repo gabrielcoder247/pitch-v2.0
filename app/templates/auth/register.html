@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block content %}
+
+<div class="jumbotron">
+        <div class="container">
+          <!-- <h1 class="display-4 text-center">Fluid jumbotron</h1> -->
+          <p class="lead text-center">Register for a new account here.</p>
+          <div class ='col-md-2'></div>
+<div class ='col-md-8'>
+    {{wtf.quick_form(registration_form)}}
+</div>
+<div class ='col-md-2'></div>
+        </div>
+      </div>
+
+{% endblock %}
+
