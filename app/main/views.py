@@ -126,13 +126,43 @@ def interviews():
     return render_template('interviews.html', title = title, pitches= pitches )
 
 @main.route('/sales/pitches/')
-def pitch():
+def sales():
     '''
     View root page function that returns the index page and its data
     '''
-    title = 'Interviews'
+    title = 'Sales'
     pitches= Pitch.get_all_pitches()
-    return render_template('interviews.html', title = title, pitches= pitches )
+    return render_template('sales.html', title = title, pitches= pitches )
+
+@main.route('/investments/pitches/')
+def investments():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    title = 'Investments'
+    pitches= Pitch.get_all_pitches()
+    return render_template('investments.html', title = title, pitches= pitches )
+
+@main.route('/customers/pitches/')
+def customers():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    title = 'Customers'
+    pitches= Pitch.get_all_pitches()
+    return render_template('customers.html', title = title, pitches= pitches )
+
+@main.route('/employees/pitches/')
+def employees():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    title = 'Employees'
+    pitches= Pitch.get_all_pitches()
+    return render_template('employees.html', title = title, pitches= pitches )
+
+
+
 
 
 
