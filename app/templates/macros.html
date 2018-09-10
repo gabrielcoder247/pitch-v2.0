@@ -28,9 +28,10 @@
 
 {% macro displayPitchList(pitch_list) %} 
 {% for pitch in pitch_list %}
-<div class="col-xs-6 col-sm-6 col-md-6">
+<div class = 'col-md-3'></div>
+<div class="col-md-6">
   <div class="card m-2">
-    <div class="card-header">
+    <div class="card-header bg-primary">
       Category - {{pitch.category}}
     </div>
     <div class="card-body">
@@ -40,11 +41,12 @@
       <hr>
       <p>Add a comment <a href="/comment/{{pitch.id}}">here</a>.</p>
     </div>
-  </div>
-  <div class="card-footer text-muted">
-    {{pitch.posted}}
+    <div class="card-footer text-muted">
+      {{pitch.posted}}
+    </div>
   </div>
 </div>
+<div class = 'col-md-3'></div>
 {% endfor %} {% endmacro %}
 
 

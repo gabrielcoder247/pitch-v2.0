@@ -12,8 +12,9 @@ def index():
     View function that return the index page and it's data
     '''
     pitches= Pitch.query.all()
+    title = 'Gabs Pitch App'
 
-    return render_template('index.html', pitches = pitches)
+    return render_template('index.html', title = title, pitches = pitches)
 
 # @main.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
 # @login_required
@@ -72,7 +73,7 @@ def new_pitch():
 
          # save pitch
         new_pitch.save_pitch()  
-        return redirect(url_for('.index'))
+        return redirect(url_for('.index') + '#myModals')
     return render_template('new_pitch.html', form = form)
 
 
@@ -94,6 +95,13 @@ def new_comment():
 
     title = f'{pitch.title} comment'
     return render_template('comment.html', title = title, form = form, comment = comment)
+
+
+@main.route('/call_modal', methods=['GET', 'POST'])
+def call_modal():
+    redirect(url_for('index') + '#myModal')
+
+
 
 # @main.route('/pitch/comment/<int:id>')
 # def comment(id):
@@ -151,7 +159,7 @@ def customers():
     customers_pitch = Pitch.query.filter_by(category = 'customers').all()
     return render_template('categories/customers.html', title = title, customers_pitch = customers_pitch)
 
-@main.route('/employees/pitches/')
+@main.route('/employees')
 def employees():
     '''
     View root page function that returns the employees pitch page and its data
