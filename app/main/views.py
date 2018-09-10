@@ -1,8 +1,9 @@
-from flask import render_template
-from flask_login import login_required
+from flask import render_template,url_for,redirect
+from flask_login import login_required,current_user
 from . import main
 from .. import db,photos
 from ..models import Pitch,User,Category
+from .forms import PitchForm, CommentForm
 
 
 
@@ -11,6 +12,7 @@ def index():
     '''
     View function that return the index page and it's data
     '''
+    category = Category.query.all()
     title = 'Gabs Pitch App'
 
     return render_template('index.html', title = title)
@@ -49,7 +51,7 @@ def category(id):
     '''
     category = Category.query.get(id)
     title = f'{category.name} pitches'
-    pitch = Pitch.get_pitches(category.id)
+    pitch = Pitch.query_all(category.id)
 
     return render_template('category.html', title = title, category = category, pitch = pitch)
 
@@ -60,13 +62,14 @@ def new_pitch(id):
     view category that returns a form to create a pitch
     '''
     form = PitchForm()
-    category = Category.query.filter_by(id = id).first()
+    
     if form.validate_on_submit():
         title = form.title.data
-        post = form.post.data
+        body = form.body.data
+        category = form.category.data
 
         # pitch instance
-        new_pitch = Pitch(category_id = category.id, title = title, post = post, user = current_user)
+        new_pitch = Pitch(category = category.id, title = title, body = body, user = current_user)
 
          # save pitch
         new_pitch.save_pitch()  
@@ -75,19 +78,18 @@ def new_pitch(id):
     return render_template('pitch.html', title = title, pitch_form = form, category = category)
 
 
-@main.route('/pitch/review/new/<int:id>', methods = ['GET','POST'])
+@main.route('/pitch/comment/new/<int:id>', methods = ['GET','POST'])
 @login_required
-def new_review(id):
+def new_comment(id):
     '''
     view category that returns a form to create a new review
     '''
-    form = ReviewForm()
-    pitch = Pitch.query.filter_by(id = id).first()
+    form = CommentForm()
     if form.validate_on_submit():
-        review = form.review.data
+        comment = form.comment.data
 
-        # review instance
-        new_review = Review(pitch_id = pitch.id, post_review = review, user = current_user)
+        # comment instance
+        new_comment = Comment (pitch_id = pitch.id, comment = comment, user = current_user)
 
         # save review 
         new_review.save_review()
@@ -97,12 +99,12 @@ def new_review(id):
     return render_template('new-review.html', title = title, review_form = form, pitch = pitch)
 
 @main.route('/pitch/reviews/<int:id>')
-def reviews(id):
+def comment(id):
     '''
     view category that returns all reviews for a pitch
     '''
-    pitch = Pitch.query.get(id)
-    review = Review.get_reviews(pitch.id)
+    pitch_id  = Pitch.query.filter_by(id =id).all()
+    comment = Review.query.filter_by(id =id).all()
     title = f'{pitch.title} review'
 
     return render_template('review.html', title = title, pitch = pitch, review = review)
@@ -122,8 +124,8 @@ def interviews():
     View root page function that returns the interviews pitch page and its data
     '''
     title = 'Interviews'
-    pitches= Pitch.get_all_pitches()
-    return render_template('categories/interviews.html', title = title, pitches= pitches )
+    interviews_pitch = Pitch.query.filter_by(category = 'interviews').all()
+    return render_template('categories/interviews.html', title = title, interviews_pitch = interviews_pitch)
 
 @main.route('/sales/pitches/')
 def sales():
@@ -131,8 +133,8 @@ def sales():
     View root page function that returns the sales page and its data
     '''
     title = 'Sales'
-    pitches= Pitch.get_all_pitches()
-    return render_template('categories/sales.html', title = title, pitches= pitches )
+    sales_pitch = Pitch.query.filter_by(category = 'sales')
+    return render_template('categories/sales.html', title = title, sales_pitch= sales_pitch).all()
 
 @main.route('/investments/pitches/')
 def investments():
@@ -140,8 +142,8 @@ def investments():
     View root page function that returns the investment pitch page and its data
     '''
     title = 'Investments'
-    pitches= Pitch.get_all_pitches()
-    return render_template('categories/investments.html', title = title, pitches= pitches )
+    investments_pitch = Pitch.query.filter_by(category = 'investments').all()
+    return render_template('categories/investments.html', title = title, investments_pitch= investments_pitch )
 
 @main.route('/customers/pitches/')
 def customers():
@@ -149,8 +151,8 @@ def customers():
     View root page function that returns the customer pitch page and its data
     '''
     title = 'Customers'
-    pitches= Pitch.get_all_pitches()
-    return render_template('categories/customers.html', title = title, pitches= pitches )
+    customers_pitch = Pitch.query.filter_by(category = 'customers').all()
+    return render_template('categories/customers.html', title = title, customers_pitch = customers_pitch)
 
 @main.route('/employees/pitches/')
 def employees():
@@ -158,8 +160,8 @@ def employees():
     View root page function that returns the employees pitch page and its data
     '''
     title = 'Employees'
-    pitches= Pitch.get_all_pitches()
-    return render_template('categories/employees.html', title = title, pitches= pitches )
+    employees_pitch = Pitch.query.filter_by(category = 'employees').all()
+    return render_template('categories/employees.html', title = title,  employees_pitch=  employees_pitch )
 
 
 
