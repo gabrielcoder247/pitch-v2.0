@@ -1,6 +1,6 @@
 
 
-
+<!-- 
 {% macro displayCategoryList(pitch_list) %} 
 {% for category in category_list %}
 <div class="col-xs-6 col-sm-6 col-md-6">
@@ -23,9 +23,7 @@
   </div>
 </div>
 {% endfor %}
-{% endmacro %}
-
-
+{% endmacro %} -->
 
 
 {% macro displayPitchList(pitch_list) %} 
@@ -33,7 +31,7 @@
 <div class="col-xs-6 col-sm-6 col-md-6">
   <div class="card m-2">
     <div class="card-header">
-       {{pitch.category}}
+      Category - {{pitch.category}}
     </div>
     <div class="card-body">
       <h5 class="card-title">{{pitch.title}}</h5>
@@ -43,6 +41,11 @@
       <p>Add a comment <a href="/comment/{{pitch.id}}">here</a>.</p>
     </div>
   </div>
+  <div class="card-footer text-muted">
+    {{pitch.posted}}
+  </div>
 </div>
-{% endfor %}
-{% endmacro %}
+{% endfor %} {% endmacro %}
+
+
+
