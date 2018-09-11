@@ -18,7 +18,10 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
-    pitch = db.relationship('Pitch',backref = 'users',lazy="dynamic")
+    pitches = db.relationship('Pitch',backref = 'user',lazy="dynamic")
+    comments = db.relationship('Comment',backref = 'user',lazy="dynamic")
+    
+
 
     def save_comment(self):
         db.session.add(self)
@@ -47,18 +50,15 @@ class Pitch(db.Model):
     '''
     Pitch class to define Pitch Objects
     '''
-    __tablename__ = 'pitch'
+    __tablename__ = 'pitches'
 
     id = db.Column(db.Integer,primary_key = True)
     title = db.Column(db.String)
     body = db.Column(db.String)
-    # category = db.Column(db.Integer)
-    upvotes = db.Column(db.Integer)
-    downvotes = db.Column(db.Integer)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     comments = db.relationship('Comment',backref = 'pitch',lazy="dynamic")
     posted = db.Column(db.DateTime, default=datetime.utcnow)
-    category_id = db.Column(db.Integer,db.ForeignKey("categories.id"))
+    Category_id = db.Column(db.Integer,db.ForeignKey("categories.id"))
 
 
     def save_pitch(self):
@@ -69,19 +69,21 @@ class Pitch(db.Model):
         db.session.commit()
 
     @classmethod
-    def get_all_pitches(cls):
+    def get_pitches(cls,id):
         '''
         Function that queries the databse and returns all the pitches
         '''
-        return Pitch.query.all()
+        pitches = Pitch.query.filter_by(Category_id = id).all()
 
-    @classmethod
-    def get_pitches_by_category(cls,cat_id):
-        '''
-        Function that queries the databse and returns pitches based on the
-        category passed to it
-        '''
-        return Pitch.query.filter_by(category_id= cat_id)
+        return pitches
+
+    # @classmethod
+    # def get_pitches_by_category(cls,cat_id):
+    #     '''
+    #     Function that queries the databse and returns pitches based on the
+    #     category passed to it
+    #     '''
+    #     return Pitch.query.filter_by(category_id= cat_id)
 
 
 
@@ -93,6 +95,9 @@ class Comment(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     comment= db.Column(db.String)
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id'))
+    posted = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    pitch_id = db.Column(db.Integer, db.ForeignKey('pitches.id'))
     
    
 
@@ -124,8 +129,8 @@ class Category(db.Model):
 
 
     id = db.Column(db.Integer, primary_key=True)
-    category = db.Column(db.String(255))
-    pitch = db.relationship('Pitch',backref = 'category',lazy="dynamic")
+    name = db.Column(db.String(255))
+    pitches= db.relationship('Pitch',backref = 'category',lazy="dynamic")
     
 
     @classmethod

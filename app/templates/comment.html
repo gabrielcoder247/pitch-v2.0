@@ -12,17 +12,36 @@
 
 <!-- BLOCK CONTENT -->
 {% block content %}
-<div class="container category-container">
-        <div class="row" id="category-head">
-            <h2>{{category.name}} Pitches</h2> <a class="btn btn-info" href="/category/pitch/new/{{category.id}}">Pitch an idea</a><br>
+
+<div class = 'col-md-3'></div>
+<div class="col-md-6">
+  <div class="card m-2">
+    <div class="card-header bg-primary">
+        <h2>{{category.name}} Pitches</h2> 
+    </div>
+    <div class="card-body">
+        <div class="col-md-2 col-lg-2" id="avatar-column">
+            <img id="avatar" src="/static/images/avatar.png" alt="Avatar">
+            <h4>{{pitch.user.username}}</h4>
         </div>
-    
-        <div class="row" id="category-cards">
-            {% if pitch %}
-                {{macro.displayPitchesList(pitch)}}
-            {% else %}
-                <h3 class="text-center">This category has no pitches</h3>
-                {% endif %}
+      <!-- <h5 class="card-title">{{pitch.title}}</h5> -->
+      <p class="card-text"> {% if pitch %}
+            {{macro.displayPitchesList(pitch)}}
+        {% else %}
+            <h3 class="text-center">This category has no pitches</h3>
+            {% endif %}</p>
+      <p class="card-text"><small class="text-muted"></small></p>
+      <hr>
+      <p></p>
+    </div>
+    <div class="card-footer text-muted">
+      {{pitch.posted}}
+      <a class="btn btn-info" href="/category/pitch/new/{{category.id}}">Pitch an idea</a>
+    </div>
+  </div>
+</div>
+<div class = 'col-md-3'></div>
+
+
 
 {% endblock %}
-
