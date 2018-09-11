@@ -73,7 +73,7 @@ def new_pitch():
 
          # save pitch
         new_pitch.save_pitch()  
-        return redirect(url_for('.index') + '#myModals')
+        return redirect(url_for('.index'))
     return render_template('new_pitch.html', form = form)
 
 
@@ -97,9 +97,7 @@ def new_comment():
     return render_template('comment.html', title = title, form = form, comment = comment)
 
 
-@main.route('/call_modal', methods=['GET', 'POST'])
-def call_modal():
-    redirect(url_for('index') + '#myModal')
+
 
 
 
@@ -159,7 +157,7 @@ def customers():
     customers_pitch = Pitch.query.filter_by(category = 'customers').all()
     return render_template('categories/customers.html', title = title, customers_pitch = customers_pitch)
 
-@main.route('/employees')
+@main.route('/employees/pitches/')
 def employees():
     '''
     View root page function that returns the employees pitch page and its data

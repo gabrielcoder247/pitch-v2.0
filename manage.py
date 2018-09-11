@@ -4,7 +4,7 @@ from app.models import User
 from app import create_app,db
 import unittest
 
-app = create_app('development')
+app = create_app('production')
 
 # Initializing extensions
 manager = Manager(app)

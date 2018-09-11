@@ -3,6 +3,21 @@
 {% import 'macros.html' as macro %}
 
 <!-- BLOCK CONTENT -->
+{% extends 'base.html' %} {% import 'macros.html' as macro %}
+
+<!-- Styles block -->
+{% block styles %} {% endblock %}
+
+
+<!-- Content block -->
+{% block content %}
+<div class="container-fluid mt-3">
+  <div class="row">
+      <a href="{{url_for('main.new_pitch')}}">Create a new pitch</a>
+      {{macro.displayPitchList(pitches,2)}}
+  </div>
+</div>
+{% endblock %}
 <!-- {% block content %}
 <div class="card text-center">
         <div class="card-header">

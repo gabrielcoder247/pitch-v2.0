@@ -24,15 +24,15 @@
   <div id="interviewPitch" class="collapse">
   <div class="card text-center">
     <div class="card-header">
-        <a  role="button" href="/interviews"class="btn  btn-success">
+        <button type="button" class="btn  btn-success">
              <span class="badge badge-pill badge-light">I</span> Interviews pitches
-        </a>
+          </button>
     </div>
     <div class="card-body">
       <h5 class="card-title"> Select your favourite news source </h5>
-      <p class="card-text"> <a href="/category/pitch/new/">here</a></p>
+      <p class="card-text"></p>
       <div class="row">
-          {{macro.displayPitchList(pitches)}}
+        {{macro.displayPitchList(pitches)}}
       </div>
       <!-- <a href="#" class="btn btn-primary">Go somewhere</a>
     </div> -->
@@ -51,7 +51,7 @@
         <h5 class="card-title">Select your favourite business news source</h5>
         <p class="card-text"> <a href="/category/pitch/new/" class="categories">Interviews</a></p>
         <div class="row">
-            {{macro.displayPitchList(pitches)}}
+          {{macro.displayPitchList(pitches)}}
         </div>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a>
       </div> -->
@@ -69,7 +69,7 @@
         </div>
         <div class="card-body">
           <h5 class="card-title">Select your favourite sports news source</h5>
-          <p class="card-text"></p>
+          <p class="card-text"><a href="/category/pitch/new/" class="categories">Investments</a></p>
           <div class="row">
               {{macro.displayPitchList(pitches)}}
           </div>
@@ -109,9 +109,9 @@
             </div>
             <div class="card-body">
               <h5 class="card-title">Select your favourite technology news source</h5>
-              <p class="card-text"><a href="/category/pitch/new/" class="categories">employees</a></p>
+              <p class="card-text"></p>
               <div class="row">
-                  {{macro.displayPitchList(employees)}}
+                 {{macro.displayPitchList(pitches)}}
               </div>
               <!-- <a href="#" class="btn btn-primary">Go somewhere</a>
             </div> -->

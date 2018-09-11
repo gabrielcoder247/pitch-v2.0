@@ -52,12 +52,13 @@ class Pitch(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     title = db.Column(db.String)
     body = db.Column(db.String)
-    category = db.Column(db.Integer)
+    # category = db.Column(db.Integer)
     upvotes = db.Column(db.Integer)
     downvotes = db.Column(db.Integer)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     comments = db.relationship('Comment',backref = 'pitch',lazy="dynamic")
     posted = db.Column(db.DateTime, default=datetime.utcnow)
+    category_id = db.Column(db.Integer,db.ForeignKey("categories.id"))
 
 
     def save_pitch(self):
@@ -123,8 +124,9 @@ class Category(db.Model):
 
 
     id = db.Column(db.Integer, primary_key=True)
-    name= db.Column(db.String(255))
     category = db.Column(db.String(255))
+    pitch = db.relationship('Pitch',backref = 'category',lazy="dynamic")
+    
 
     @classmethod
     def get_categories(cls):

@@ -14,8 +14,10 @@ class Config:
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
-    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+    MAIL_USERNAME = 'gabrielcoder247@gmail.com'
+    MAIL_PASSWORD = 'dushanbe2015'
+    SUBJECT_PREFIX = 'Watchlist'
+    SENDER_EMAIL = 'gabrielcoder247@gmail.com'
 
 
 
@@ -30,6 +32,7 @@ class ProdConfig(Config):
 
 
 class DevConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://gabrielcoder:dushanbe2015@localhost/pitch'
     '''
     Development  configuration child class
 
