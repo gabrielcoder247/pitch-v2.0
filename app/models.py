@@ -19,6 +19,7 @@ class User(UserMixin, db.Model):
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
     pitch = db.relationship('Pitch',backref = 'users',lazy="dynamic")
+    comment = db.relationship('Comment',backref = 'users',lazy="dynamic")
 
     def save_comment(self):
         db.session.add(self)
@@ -47,16 +48,15 @@ class Pitch(db.Model):
     '''
     Pitch class to define Pitch Objects
     '''
-    __tablename__ = 'pitch'
+    __tablename__ = 'pitches'
 
     id = db.Column(db.Integer,primary_key = True)
     title = db.Column(db.String)
     body = db.Column(db.String)
-    # category = db.Column(db.Integer)
     upvotes = db.Column(db.Integer)
     downvotes = db.Column(db.Integer)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-    comments = db.relationship('Comment',backref = 'pitch',lazy="dynamic")
+    comment = db.relationship('Comment',backref = 'pitch',lazy="dynamic")
     posted = db.Column(db.DateTime, default=datetime.utcnow)
     category_id = db.Column(db.Integer,db.ForeignKey("categories.id"))
 
@@ -76,12 +76,12 @@ class Pitch(db.Model):
         return Pitch.query.all()
 
     @classmethod
-    def get_pitches_by_category(cls,cat_id):
+    def get_pitches_by_category(cls,id):
         '''
-        Function that queries the databse and returns pitches based on the
+        Function that queries the database and returns pitches based on the
         category passed to it
         '''
-        return Pitch.query.filter_by(category_id= cat_id)
+        return Pitch.query.filter_by(category_id= id)
 
 
 
@@ -92,7 +92,9 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer,primary_key = True)
     comment= db.Column(db.String)
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id'))
+    posted = db.Column(db.DateTime, default = datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
     
    
 
@@ -109,7 +111,7 @@ class Comment(db.Model):
         Comment.all_comments.clear()
 
     @classmethod
-    def get_comments(cls,id):
+    def get_comments(cls,ido ):
         comments = Comment.query.filter_by(pitch_id=id).all()
 
         return comments
@@ -125,7 +127,8 @@ class Category(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(255))
-    pitch = db.relationship('Pitch',backref = 'category',lazy="dynamic")
+    pitch = db.relationship('Pitch',backref = 'categories',lazy="dynamic")
+    
     
 
     @classmethod

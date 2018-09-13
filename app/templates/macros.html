@@ -47,7 +47,7 @@
       <p class="card-text">{{pitch.body}}</p>
       <p class="card-text"><small class="text-muted"></small></p>
       <hr>
-      <p>Add a comment <a href="/comment/{{pitch.id}}">here</a>.</p>
+      
     </div>
     <div class="card-footer text-muted">
       {{pitch.posted}}
@@ -56,6 +56,17 @@
 </div>
 <div class = 'col-md-3'></div>
 {% endfor %} {% endmacro %}
+
+{% macro displayComments(comment_list) %}
+    {% for comment in comment_list %}
+        <div class="well reviews-well">
+            <li>
+                <h3>{{comment.comment}}</h3>
+      
+            </li>
+        </div>
+    {% endfor %}
+{% endmacro %}
 
 
 
