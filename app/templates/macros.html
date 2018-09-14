@@ -1,4 +1,8 @@
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3e64a2d57cc9000291e11f7aa738690ca5fea512
 {% macro displayCategories(category_list) %}
     {% for category in category_list %}
         <li id="categories">
@@ -17,15 +21,27 @@
       Category - {{pitch.category}}
     </div>
     <div class="card-body">
+        <div class="col-md-2 col-lg-2" id="avatar-column">
+            <img id="avatar" src="/static/images/avatar.png" alt="Avatar">
+            <h4>{{pitch.user.username}}</h4>
+        </div>
       <h5 class="card-title">{{pitch.title}}</h5>
+<<<<<<< HEAD
       <p class="card-text">{{pitch.body}}</p>
       <p class="card-text"><small class="text-muted"> <a href="/category/pitch/comment/{{pitch.id}}"><h3>view comments</h3></a>
         </small></p>
       <hr>
       <p>Add a comment <a href="/category/pitch/comment/new/{{pitch.id}}">here</a>.</p>
+=======
+      <p class="card-text">{{pitch.post}}</p>
+      <p class="card-text"><small class="text-muted"></small></p>
+      <hr>
+      <p></p>
+>>>>>>> 3e64a2d57cc9000291e11f7aa738690ca5fea512
     </div>
     <div class="card-footer text-muted">
       {{pitch.posted}}
+      <a href="/pitch/comments/{{pitch.id}}">view comments</a>
     </div>
   </div>
 </div>
@@ -44,5 +60,22 @@
     {% endfor %}
 {% endmacro %}
 
+
+
+
+{% macro displayComments(comment_list) %}
+    {% for comment in comment_list %}
+<div class = 'col-md-3'></div>
+<div class="card border-success mb-3" style="max-width: 18rem;">
+    <div class="card-header bg-transparent border-primary">Header</div>
+    <div class="card-body text-success">
+      <h5 class="card-title">Success card title</h5>
+      <p class="card-text">{{comment.post_comment}}</p>5>
+    </div>
+    <div class="card-footer bg-transparent border-success">{{review.user.username}} posted at by {{comment.posted}}</div>
+  </div>
+<div class = 'col-md-3'></div>
+{% endfor %} 
+{% endmacro %}
 
 

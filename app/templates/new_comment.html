@@ -2,6 +2,7 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block content %}
+<<<<<<< HEAD
     {{ pitch.comment}}
     <div class="container">
         <div class="panel form-panel">
@@ -14,3 +15,11 @@
 
 
 
+=======
+    <div class="container">
+        <div class="panel form-panel">
+            {{ wtf.quick_form(comment_form) }}                
+        </div>
+    </div>
+{% endblock %}
+>>>>>>> 3e64a2d57cc9000291e11f7aa738690ca5fea512
