@@ -4,11 +4,11 @@
 {% block content %}
     <div class="container">
         <div class="panel reviews">
-                <a href="/pitch/comment/new/{{pitch.id}}"><h3>Create a Comment</h3></a>
+                <a href="/category/pitch/comment/{{pitch.id}}"><h3>Create a Comment</h3></a>
             {% if comment %}
                 <ul class="reviews-list">
                         
-                    {{ macro.displayComments(comment) }}
+                    {{ macro.displayComments(comments) }}
                 </ul>
             {% else %}
                 <h3>This pitch has no comments</h3>
