@@ -1,35 +1,58 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField, RadioField
+from wtforms import StringField, TextAreaField, SubmitField, SelectField
 from wtforms.validators import Required
 
+class PitchForm(FlaskForm):
+    pitch = TextAreaField('Your Pitch', validators=[Required()])
+    # my_category = StringField('Category', validators=[Required()])
+    my_category = SelectField('Category', choices=[('Interview-Pitch','Interview Pitch'),('Product-Pitch','Product Pitch'),('Promotion-Pitch','Promotion Pitch'),('Business','Business'),('Academic','Academic'),('Political','Political'),('Technology','Technology'),('Health','Health')],validators=[Required()])
+    submit = SubmitField('Pitch It!')
 
 class CommentForm(FlaskForm):
-    comment = TextAreaField('Your Review or Comments', validators = [Required()])
-    submit = SubmitField('Submit')
-
-
-class VoteForm(FlaskForm):
-    rating = RadioField('Do you like this Pitch? Upvote or Downvote it',
-                        choices=[('upvote', 'upvote'),
-                                 ('downvote', 'downvote')],
-                        validators=[Required()])
-
+    comment = TextAreaField('Comment', validators=[Required()])
+    submit = SubmitField('Post Comment')
 
 class UpdateProfile(FlaskForm):
-    bio = TextAreaField('Tell us more about yourself.',
-                        validators=[Required()])
-
-
-class PitchForm(FlaskForm):
-    title = StringField('Pitch Title', validators = [Required()])
-    body = TextAreaField('Your Pitch', validators = [Required()])
+    bio = TextAreaField('Write something about yourself',validators=[Required()])
     submit = SubmitField('Submit')
 
 
-class InterviewForm(FlaskForm):
-    title = StringField('Pitch Title', validators = [Required()])
-    body = TextAreaField('Your Pitch', validators = [Required()])
-    submit = SubmitField('Submit')
+
+
+
+
+# from flask_wtf import FlaskForm
+# from wtforms import StringField, TextAreaField, SubmitField, RadioField,SelectField
+# from wtforms.validators import Required
+
+
+# class CommentForm(FlaskForm):
+#     comment = TextAreaField('Your Review or Comments', validators = [Required()])
+#     submit = SubmitField('Submit')
+
+
+# class VoteForm(FlaskForm):
+#     rating = RadioField('Do you like this Pitch? Upvote or Downvote it',
+#                         choices=[('upvote', 'upvote'),
+#                                  ('downvote', 'downvote')],
+#                         validators=[Required()])
+
+
+# class UpdateProfile(FlaskForm):
+#     bio = TextAreaField('Tell us more about yourself.',
+#                         validators=[Required()])
+
+
+# class PitchForm(FlaskForm):
+#     title = StringField('Pitch Title', validators = [Required()])
+#     body = TextAreaField('Your Pitch', validators = [Required()])
+#     submit = SubmitField('Submit')
+
+
+# class GeneralForm(FlaskForm):
+#     title = StringField('Pitch Title', validators = [Required()])
+#     body = TextAreaField('Your Pitch', validators = [Required()])
+#     submit = SubmitField('Submit')
 
 # class SalesForm(FlaskForm):
 #     title = StringField('Pitch Title', validators = [Required()])
@@ -66,7 +89,7 @@ class InterviewForm(FlaskForm):
 # class PitchForm(FlaskForm):
 #     pitch_title = StringField('Title', validators=[Required()])
 #     content = TextAreaField('Pitch', validators=[Required()])
-#     category = SelectField('Category', choices=[('Advertisement','Advertisement Pitch'),('Project','Project Pitch'),('General','General Pitch'),('Sale','Sale Pitch')], validators=[Required()])
+#     category = SelectField('Category', choices=[('Interview','Interview Pitch'),('Employee','Employee Pitch'),('General','General Pitch'),('Sale','Sale Pitch')], validators=[Required()])
 #     submit = SubmitField('Write Pitch!')
 
 # class CommentForm(FlaskForm):
