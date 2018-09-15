@@ -3,7 +3,8 @@
 <div class="container-fluid welcome-page">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 welcome">
+          <div class = 'col-md-2'></div>
+            <div class="col-md-8 welcome">
                 <h1>Welcome</h1>
                 <h2>One Minute Pitch</h2>
                 {% if current_user.is_authenticated%}
@@ -12,6 +13,7 @@
                 <a id="start" class="btn btn-danger animated infinite flash" href="{{url_for('auth.login')}}">Sign In</a>
                 {% endif %}
             </div>
+            
         </div>
     </div>
 </div>
@@ -22,69 +24,6 @@
 
 
 
-
-
-
-<!-- {% extends 'base.html' %}
-{% import 'macros.html' as macro %}
-
-
-{% block styles %}
-    {{ super() }}
-    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
-{% endblock %}
-
-{% block content %}
-<div class="jumbotron">
-  <h1 class="display-4 text-center text-primary animated infinite bounce delay-0.2s">{{title}}</h1>
-  <p class="lead text-center">An app that helps you to view news source and top headlines from different source.</p>
-  <hr class="my-4">
-  <p class="lead text-center">click the buttons below to choose news sources by category. Then click on news source to view their top headlines and the news details.</p>
-  <p class="lead text-center">
-    <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#interviewPitch" role="button" aria-expanded="false" aria-controls="collapseExample">Interviews</a>
-  </p>
-  <div id="interviewPitch" class="collapse">
-  <div class="card text-center">
-    <div class="card-header">
-        <button type="button" class="btn  btn-success">
-             <span class="badge badge-pill badge-light">I</span> Interviews pitches
-          </button>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title"> Select your favourite news source </h5>
-      <p class="card-text"></p>
-      <div class="row">
-          <div class="list-group">
-              <button type="button" class="list-group-item list-group-item-action active">
-                Cras justo odio
-              </button>
-              <button type="button" class="list-group-item list-group-item-action"><ul class="category-list text-center">
-                  {{macro.displayCategories(category)}}
-              </ul></button>
-              
-            </div>
-      </div>
-  </div>
-</div>
-</div>
-</div>
-{% endblock %} -->
-<!-- <div id="salesPitch" class="collapse">
-    <div class="card text-center">
-      <div class="card-header"><button type="button" class="btn  btn-success">
-          <span class="badge badge-pill badge-light">S</span> Sales pitches
-       </button>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Select your favourite business news source</h5>
-        <p class="card-text"> <a href="/category/pitch/new/" class="categories">Interviews</a></p>
-        <div class="row">
-          {{macro.displayPitchList(pitches)}}
-        </div>
-    </div>
-  </div>
-  </div> -->
 
 
   

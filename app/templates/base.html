@@ -1,14 +1,21 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         {% if title %}
         <title> {{ title }}</title>
         {% else %}
-        <title> Gabs pitch apps </title>
-        {% endif %}
-
-
+        <title> WELCOME TO PITCHIT  </title>
+		{% endif %}
+		
+<link rel="stylesheet" href="{{url_for('static',filename='css/animate.min.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+<link rel="shortcut icon" href="{{url_for('static',filename='favicon.ico')}}" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Bilbo Swash Caps' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Mukta' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Shadows Into Light Two' rel='stylesheet'>
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -17,25 +24,28 @@
 		href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
 		integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
 		crossorigin="anonymous">
+			  
+		<!------ Include the above in your HEAD tag ---------->
+		
     </head>
     <body>
 
+{% extends 'bootstrap/base.html' %}
 
-        {% extends 'bootstrap/base.html'%} -->
-        
-        
-
-        <!-- Navbar block  --> 
-        <!-- {% block navbar %}
-            {% include 'navbar.html' %}
-        {% endblock %}
-       
-
-        {% block content %}
-
-        {% endblock%}
-    </body>
-</html> -->
+<!-- Importing the simple mde css and js files -->
+{{ simplemde.css }}
+{{ simplemde.js }}
 
 
+{% block navbar%}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block scripts %}
+{{super()}}
+<script src="{{url_for('static',filename='js/script.js')}}"></script>
+{% endblock %}
+
+</body>
+</html>
 

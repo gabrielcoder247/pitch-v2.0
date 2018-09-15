@@ -1,18 +1,20 @@
-<!-- {% extends 'base.html' %} {% block content %}
-<div class="container-fluid">
-    <a href="/user/category/general">
-        <button class="btn btn-danger">
-            Create a pitch</button>
-    </a>
-    <br> {%for general in posts%}
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% import 'macros.html' as macro%}
+
+{% block content %}
+<div class="container">
     <div class="row">
-        <div class="panel panel-default">
-            <a style="text-decoration: none;" href="/user/general/{{general.id}}">
-                <h4>{{general.post}}</h4>
-            </a>
-            <h5>by {{general.user.username}}</h5>
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    {{wtf.quick_form(pitch_form)}}
+                </div>
+                {{macro.displayPitches(pitches)}}
+            </div>
         </div>
+        <div class="col-md-2"></div>
     </div>
-    {%endfor%}
 </div>
-{% endblock %} -->
+{% endblock %}
