@@ -28,7 +28,7 @@
 .welcome-page {
     padding: 0;
     margin: 0;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.61)), url('/static/photos/bg.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.61)), url('/static/images/bg.png');
     background-size: cover;
 }
 

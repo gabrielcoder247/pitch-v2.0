@@ -1,5 +1,5 @@
 
-## Pitch It is a web application that is meant for users to create a pitch on 7 different categories and other user like them or dislike them
+## Pitch It is a web application that is meant for users to create a pitch on 7 different categories and other user, like them or dislike them
 ### september, 15TH,  2018
 #### By **[GABRIEL NWACHUKWU](https://github.com/gabrielcoder247)**
 
