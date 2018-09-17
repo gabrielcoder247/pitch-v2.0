@@ -6,7 +6,7 @@ class Config:
     '''
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://gabrielcoder:dushanbe2015@localhost/pitch'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
-    SECRET_KEY ='12345'
+    # SECRET_KEY ='12345'
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 
@@ -46,16 +46,16 @@ class DevConfig(Config):
         Config: The parent configuration class with General configuration settings
 
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://gabrielcoder:dushanbe2015@localhost/pitch'
+    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://gabrielcoder:dushanbe2015@localhost/pitch'
 
-    MAIL_SERVER = 'smtp.googlemail.com'
-    MAIL_PORT = 587
-    MAIL_USE_TLS = True
-    MAIL_USERNAME = 'gabrielcoder247@gmail.com'
-    MAIL_PASSWORD = 'dushanbe2015'
-    SUBJECT_PREFIX = 'pitchit'
-    SENDER_EMAIL = 'gabrielcoder247@gmail.com'
-    sender='gabrielcoder247@gmail.com'
+    # MAIL_SERVER = 'smtp.googlemail.com'
+    # MAIL_PORT = 587
+    # MAIL_USE_TLS = True
+    # MAIL_USERNAME = 'gabrielcoder247@gmail.com'
+    # MAIL_PASSWORD = 'dushanbe2015'
+    # SUBJECT_PREFIX = 'pitchit'
+    # SENDER_EMAIL = 'gabrielcoder247@gmail.com'
+    # sender='gabrielcoder247@gmail.com'
 
 
     
