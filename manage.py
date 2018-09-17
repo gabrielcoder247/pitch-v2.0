@@ -27,5 +27,6 @@ def test():
     unittest.TextTestRunner(verbosity=2).run(tests)
 
 if __name__ == '__main__':
+    app.secret_key='12345'
     manager.run()
 
