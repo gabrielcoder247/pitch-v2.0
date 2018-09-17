@@ -4,6 +4,7 @@ export MAIL_PASSWORD='@#dushanbe2015'
 export SECRET_KEY ='12345'
 
 
-export DATABASE_URL='postgres://hugcsjokjgcqeo:b7f05921760f936dcde7bffa143b7b7ca99898739e7e94c300b77f5904926fa3@ec2-54-83-27-165.compute-1.amazonaws.com:5432/dci1i2498akdhp'
+export DATABASE_URL='postgres://jshmvsyebtgtbt:f750eb048ace131bd14ea498410453633a2f1bbf01bcedd2eb2dc0481a187480@ec2-54-83-50-145.compute-1.amazonaws.com:5432/da2ie3hl1ni39s'
+
 
 python3.6 manage.py server
