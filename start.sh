@@ -7,11 +7,12 @@
 # SUBJECT_PREFIX = 'pitchit'
 # SENDER_EMAIL = 'gabrielcoder247@gmail.com'
 # sender='gabrielcoder247@gmail.com'
+
 export MAIL_USERNAME='gabrielcoder247@gmail.com'
 export MAIL_PASSWORD='@#dushanbe2015'
 
 
-export DATABASE_URL='postgres://ardywwnajqlzjp:28b9f1d95cf228f87f501fb5605739a02bf5f7c7e58fce9087d8a31cd6f7a38d@ec2-23-23-253-106.compute-1.amazonaws.com:5432/dfd0o7m0u0qe1u'
 
+export DATABASE_URL='postgres://hugcsjokjgcqeo:b7f05921760f936dcde7bffa143b7b7ca99898739e7e94c300b77f5904926fa3@ec2-54-83-27-165.compute-1.amazonaws.com:5432/dci1i2498akdhp'
 
 python3.6 manage.py server
