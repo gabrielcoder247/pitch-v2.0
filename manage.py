@@ -6,6 +6,7 @@ import unittest
 
 app = create_app('production')
 
+
 # Initializing extensions
 manager = Manager(app)
 manager.add_command('server',Server)
